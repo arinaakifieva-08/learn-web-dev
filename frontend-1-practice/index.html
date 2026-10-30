@@ -1,26 +1,215 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Выбор даты и времени</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!--
-      ЗАДАНИЕ
-      ========
-      Сверстать страницу выбора даты и времени по своему макету.
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Выбор даты и времени — ATELIER 17</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-      Пока это только вёрстка. Никакого JavaScript — ни кликов,
-      ни переходов, ни выбора дня. Всё статично.
+<header class="header">
+    <a href="#" class="logo">
+        <span>ATELIER <b>17</b></span>
+        <small>BARBERSHOP & HAIR</small>
+    </a>
 
-      Стили пишите в styles.css. Разметку — здесь.
-    -->
+    <nav class="navigation">
+        <a href="#services">Услуги</a>
+        <a href="#masters">Мастера</a>
+        <a href="#reviews">Отзывы</a>
+    </nav>
 
-    <div class="page">
-      <!-- Начните отсюда. Разметьте шапку, основную область
-           с календарём и слотами, подвал. -->
+    <a class="phone" href="tel:+74951234567">
+        +7 (495) 123-45-67
+    </a>
+</header>
+
+<main class="container">
+
+    <section class="intro">
+        <p class="subtitle">ОНЛАЙН-ЗАПИСЬ</p>
+        <h1>Выберите дату <em>и время</em></h1>
+        <p>Остался последний шаг — выберите удобное время для визита.</p>
+    </section>
+
+    <ol class="steps">
+        <li class="completed"><span>✓</span> Мастер</li>
+        <li class="completed"><span>✓</span> Услуга</li>
+        <li class="active"><span>03</span> Дата и время</li>
+        <li><span>04</span> Контакты</li>
+    </ol>
+
+    <div class="booking">
+
+        <section class="card calendar-card">
+            <div class="section-heading">
+                <div>
+                    <p class="subtitle">ШАГ 03 / 04</p>
+                    <h2>Когда вам удобно?</h2>
+                </div>
+                <span class="timezone">МСК · UTC+3</span>
+            </div>
+
+            <div class="month">
+                <span class="arrow">‹</span>
+                <h3>Октябрь 2026</h3>
+                <span class="arrow">›</span>
+            </div>
+
+            <div class="calendar">
+                <span class="weekday">ПН</span>
+                <span class="weekday">ВТ</span>
+                <span class="weekday">СР</span>
+                <span class="weekday">ЧТ</span>
+                <span class="weekday">ПТ</span>
+                <span class="weekday">СБ</span>
+                <span class="weekday">ВС</span>
+
+                <span class="day muted">28</span>
+                <span class="day muted">29</span>
+                <span class="day muted">30</span>
+                <span class="day muted">1</span>
+                <span class="day muted">2</span>
+                <span class="day">3</span>
+                <span class="day">4</span>
+
+                <span class="day">5</span>
+                <span class="day">6</span>
+                <span class="day">7</span>
+                <span class="day">8</span>
+                <span class="day">9</span>
+                <span class="day">10</span>
+                <span class="day">11</span>
+
+                <span class="day">12</span>
+                <span class="day">13</span>
+                <span class="day">14</span>
+                <span class="day selected">15<i></i></span>
+                <span class="day available">16<i></i></span>
+                <span class="day available">17<i></i></span>
+                <span class="day">18</span>
+
+                <span class="day">19</span>
+                <span class="day available">20<i></i></span>
+                <span class="day available">21<i></i></span>
+                <span class="day">22</span>
+                <span class="day available">23<i></i></span>
+                <span class="day">24</span>
+                <span class="day">25</span>
+
+                <span class="day available">26<i></i></span>
+                <span class="day">27</span>
+                <span class="day available">28<i></i></span>
+                <span class="day available">29<i></i></span>
+                <span class="day">30</span>
+                <span class="day">31</span>
+                <span class="day muted">1</span>
+            </div>
+
+            <div class="legend">
+                <span><i class="gold-dot"></i> Есть свободное время</span>
+                <span><i class="green-dot"></i> Выбранная дата</span>
+                <span><i class="gray-dot"></i> Н
+
+ет мест</span>
+            </div>
+
+            <p class="hint">Доступность времени может меняться.</p>
+        </section>
+
+        <section class="card time-card">
+            <div class="section-heading">
+                <div>
+                    <p class="subtitle">ДОСТУПНЫЕ СЛОТЫ</p>
+                    <h2>Четверг, 15 октября</h2>
+                </div>
+                <span class="status">● Свободно</span>
+            </div>
+
+            <p class="description">Выберите время начала визита</p>
+
+            <section class="time-group">
+                <div class="group-heading">
+                    <h3>☀ Утро</h3>
+                    <span>09:00–12:00</span>
+                </div>
+
+                <div class="time-grid">
+                    <button class="time-slot">09:00</button>
+                    <button class="time-slot">09:30</button>
+                    <button class="time-slot busy" disabled>10:00</button>
+                    <button class="time-slot">10:30</button>
+                    <button class="time-slot">11:00</button>
+                    <button class="time-slot busy" disabled>11:30</button>
+                </div>
+            </section>
+
+            <section class="time-group">
+                <div class="group-heading">
+                    <h3>◷ День</h3>
+                    <span>12:00–17:00</span>
+                </div>
+
+                <div class="time-grid">
+                    <button class="time-slot">12:00</button>
+                    <button class="time-slot busy" disabled>12:30</button>
+                    <button class="time-slot">13:00</button>
+                    <button class="time-slot">14:00</button>
+                    <button class="time-slot">15:30</button>
+                    <button class="time-slot">16:30</button>
+                </div>
+            </section>
+
+            <section class="time-group">
+                <div class="group-heading">
+                    <h3>☾ Вечер</h3>
+                    <span>17:00–20:00</span>
+                </div>
+
+                <div class="time-grid">
+                    <button class="time-slot">17:00</button>
+                    <button class="time-slot">17:30</button>
+                    <button class="time-slot busy" disabled>18:00</button>
+                    <button class="time-slot">18:30</button>
+                    <button class="time-slot">19:00</button>
+                    <button class="time-slot">19:30</button>
+                </div>
+            </section>
+
+            <div class="summary">
+                <span class="check">✓</span>
+                <div>
+                    <strong>15 октября, четверг</strong>
+                    <p>Выберите свободное время выше</p>
+                </div>
+            </div>
+
+            <button class="continue-button" type="button">
+                Продолжить <span>→</span>
+            </button>
+
+            <p class="note">Бесплатная отмена за 24 часа до визита</p>
+        </section>
+
     </div>
-  </body>
+
+    <div class="back">
+        <a href="#">← Назад к выбору услуги</a>
+        <span>Нужна помощь? <a href="tel:+74951234567">Свяжитесь с нами</a></span>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <a href="#" class="logo">
+        <span>ATELIER <b>17</b></span>
+        <small>BARBERSHOP & HAIR</small>
+    </a>
+
+    <p>Хороший стиль начинается с деталей.</p>
+    <small>© 2026 ATELIER 17</small>
+</footer>
+
+</body>
 </html>
