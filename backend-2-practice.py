@@ -1,75 +1,48 @@
-from datetime import datetime
 
-class Appoinment:
-    def __init__(self, appointment_id, client_name, master_id, service_id, time):
-        self.id = appointment_id
-        self.client_name = client_name
-        self.master_id = master_id
-        self.service_id = service_id
-        self.time = time
+from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 
-appointments = []
+app = FastAPI()
 
-def create_appointment(
-    client_name: str,
-    master_id: int,
-    service_id: int,
-    time: str,
-) -> Appoinment | None:
+# Список категорий услуг
+categories = [
+    {
+        "id": 1,
+        "name": "Стрижки и укладки",
+        "servicesCount": 5
+    },
+    {
+        "id": 2,
+        "name": "Маникюр и педикюр",
+        "servicesCount": 5
+    },
+    {
+        "id": 3,
+        "name": "Брови и ресницы",
+        "servicesCount": 4
+    },
+    {
+        "id": 4,
+        "name": "Спа-процедуры",
+        "servicesCount": 4
+    }
+]
 
-    # Проверяем, что все поля заполнены
-    if not client_name or not client_name.strip():
-        return None
+# Задание 1. Получить все категории
+@app.get("/categories")
+def get_categories():
+    return categories
 
-    if master_id is None or service_id is None or not time:
-        return None
+# Задание 2. Получить категорию по ID
+@app.get("/categories/{category_id}")
+def get_category(category_id: int):
+    for category in categories:
+        if category["id"] == category_id:
+            return category
 
-    # Проверяем существование мастера и услуги
-    master = get_master(master_id)
-    service = get_service(service_id)
-
-    if master is None or service is None:
-        return None
-
-    # Проверяем формат времени и часы работы салона
-    try:
-        appointment_time = datetime.strptime(time, "%H:%M")
-    except ValueError:
-        return None
-
-    if appointment_time.strftime("%H:%M") != time:
-        return None
-
-    if not (8 * 60 <= appointment_time.hour * 60 + appointment_time.minute <= 20 * 60):
-        return None
-
-    # Создаём объект записи
-    appointment = Appoinment(
-        appointment_id=len(appointments) + 1,
-        client_name=client_name,
-        master_id=master.master_id,
-        service_id=service.service_id,
-        time=time,
+    return JSONResponse(
+        status_code=404,
+        content={"message": "Category not found"}
     )
 
-    appointments.append(appointment)
 
-    return appointment
-
-first_appointment = create_appointment("Иванова А.А.", 1, 1, "10:00")
-second_appointment = create_appointment("Петрова А.А.", 1, 1, "11:00")
-
-print("Список записей:")
-
-for appointment in appointments:
-    print(appointment.client_name, appointment.time)
-
-print("\nПроверка пустого имени:")
-
-no_correct_appointment = create_appointment("", 1, 1, "12:00")
-print(no_correct_appointment)
-
-print("\nПроверка неправильного времени:")
-
-no_correct_appointment = create_appointment("Сидорова А.А.", 1, 1, "00:00")
-print(no_correct_appointment)
